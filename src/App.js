@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const App = () => {
   return (
-    <h1>
-     Create React App Without CRA ☘️
-     <div>
-       Life is Hard
-     <
+    <div style={{textAlign:'center'}}>
+      <h1>Create React App Without CRA ☘️</h1>
+    </div>
+  );
+};
+
+export default App;
