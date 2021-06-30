@@ -10,6 +10,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ["babel-loader"],
       },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|svg|gif)?$/,
+        use: ["file-loader"],
+      },
     ],
   },
   resolve: {
@@ -19,9 +27,7 @@ module.exports = {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js",
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(
-    
-  )],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
     hot: true,
