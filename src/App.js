@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import HashLoader from "react-spinners/HashLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import "./styles.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProjectForm from "./ProjectForm";
+import ProjectBody from "./ProjectBody";
 
 const App = () => {
   const [state, setState] = useState(false);
@@ -20,7 +20,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={ProjectForm} />
+        <Route exact path="/" component={ProjectBody} />
       </Switch>
     </Router>
   );

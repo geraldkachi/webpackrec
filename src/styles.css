@@ -1,31 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  background-color: #e5e5e5;
+  background-color: #ffff;
 }
 .app {
   display: flex;
   justify-content: center;
   align-items: start;
+  /* margin: 40px 0; */
+}
+.slash {
+  text-align: center;
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.btnbody {
+  margin: 20px 0;
+}
+.orderform {
+  font-family: "Work Sans", sans-serif;
+  margin: 20px 0;
+}
+.orderform h1 {
+  font-size: 22px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 38px;
+}
+.orderform hr {
+  border: 1px solid #0e2f3b;
+  margin: 20px 0;
+}
+.para {
+  font-family: "DM Sans", sans-serif;
+  color: #0b0b0b;
 }
 a {
   border-radius: 4px;
   background-color: #f3f3f3;
+  color: #0b0b0b;
   margin: 5px 3px;
   padding: 8px 26px;
   cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  text-decoration: none;
+  font-size: 14px;
 }
 a:hover,
 a:active {
   background-color: #d2efff;
   color: #016a90;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 .active {
   background-color: #d2efff;
   color: #016a90;
+}
+.active1 {
+  background-color: #d2efff;
+  color: #016a90;
+}
+
+
+/* end of input style */
+/* input[type="email"] {} */
+  /* input[type='checkbox'],
+  input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  } */
+input {
+  width: 100%;
+  padding-left: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  transition: all 0.15s ease-in;
+  border-right: 0;
+  border-left: 0;
+  border-top: 2px;
+  border-color:  #CBCBCB;
+  color: #757575;
+  font-family: "DM Sans", sans-serif;
+}
+::placeholder {
+  font-family: "DM Sans", sans-serif;
+  color: #757575;
+}
+
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container input{ 
+  border:none;
+  border-bottom: 2px solid #CBCBCB;	  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color: #0B0B0B;
+  font-family: "DM Sans", sans-serif;
+}
+
+.input-container label {
+  position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color: #757575;	
+  pointer-events: none;
+  font-family: "DM Sans", sans-serif;
+	transition: all 0.5s ease-in-out;
+}
+
+.input-container input:focus{ 
+  border:none;	
+  outline:none;
+  border-bottom: 2px solid #CBCBCB;	
+ }
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
+/* end of input style */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
 }
