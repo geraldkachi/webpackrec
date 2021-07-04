@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 // import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import {  Link  } from "react-router-dom";
 import PickupAddress from "./Pickup/PickupAddress"
+import PhoneNumber from "./PhoneNumber"
 // import { useFormik } from "formik";
 // import * as Yup from "yup"
 import "./styles.css";
 import Fullname from "./Fullname"
+import ContentPackage from "./ContentPackage";
+import MonetaryPackage from "./MonetaryPackage";
+import Dropoffdetails from "./Dropoffdetails";
+import DropoffphoneNumber from "./DropoffphoneNumber";
+import Confirm from "./Confirm";
 
 const ProjectForm = () => {
 
@@ -19,11 +25,12 @@ const ProjectForm = () => {
   const [form, setForm] = useState({ 
     fullname: "", 
     pickupaddress: "", 
+    pickupphone: "",
     dropoff: "",  
-    contentpackage: '', 
-    monetary: '', 
-    dropoffaddress: '', 
-    phonenumber:'' 
+    contentpackage: "", 
+    monetary: "", 
+    dropoffaddress: "", 
+    phonenumber:"" 
   });
 
   // const { pickupaddress ,dropoff , email ,contentpackage,  monetary } = form
@@ -31,10 +38,9 @@ const ProjectForm = () => {
   // const splitLocation = pathname.split("/");
 
   const nextStep = () => {
-    // const nextQuestion = step + 1
     setStep(step + 1)
   }
-  const prevStep = () => {
+  const prevStep = (e) => {
     setStep(step - 1)
   }
 
@@ -54,38 +60,52 @@ const ProjectForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setForm({
-      fullname: '',
-      pickaddress: "",
+      fullname: "",
+      phonenumber: "",
+      pickupphone: "",
+      contentpackage: "",
+      monetary: "",
       dropoffaddress: "",
-      contentpackage: '',
-      monetary: '',
-      dropoffaddress: '',
-      phonenumber: ''
+      pickupaddress: "",
+      dropoffaddress: "",
+      dropoffphone: ""
     });
   }
 
-   const handleChange = input => (e) => {
-    // const {name, value} = e.target
-    setForm({ [input]: e.taget.value });
+  // const handleChange = input => (e) => {
+  //   setForm({ [input]: e.taget.value });
+  // };
+
+   const handleChange =  (e) => {
+     e.preventDefault();
+    const {name, value} = e.target
+    setForm({ [name]: value });
     // setForm({ ...form, [input]: value });
     // setForm({ ...form, [target.name]: target.value });
   };
   
   // end for 
+  const  {  fullname, pickupaddress, pickupphone,dropoffphone, dropoffaddress, contentpackage, monetary, phonenumber  } = form
+
+  const values = {  fullname, pickupphone, pickupaddress, dropoffphone, dropoffaddress, contentpackage, monetary, dropoffaddress, phonenumber  }
 
   switch (step) {
-    case 0:
-      return (
-        <PickupAddress {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
-      )
+      case 0:
+        return <Fullname {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 1:
-        return <Fullname {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PhoneNumber {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 2:
-        return <h1>FormPersonalDetail</h1>
+        return <ContentPackage {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
       case 3:
-        return <h1>Confirm</h1>
+        return <MonetaryPackage {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 4: 
-      return <h1>Success</h1>
+      return <Dropoffdetails {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        case 5: 
+      return <PickupAddress {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
+        case 6: 
+      return <DropoffphoneNumber {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        case 7: 
+      return <Confirm {...{values}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
   
     default:
       break;
@@ -93,7 +113,7 @@ const ProjectForm = () => {
 
   return (
     <>
-    <h2>Project</h2>
+    <h2 style={{textAlign: 'center'}}>Thank You for Submitting</h2>
     </>
   );
 };

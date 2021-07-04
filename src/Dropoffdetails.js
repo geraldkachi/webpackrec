@@ -1,13 +1,25 @@
 import React from 'react'
 import "./styles.css";
 
-const Dropoffdetails = () => {
+const Dropoffdetails = ({ values, handleChange, nextStep, prevStep }) => {
+
+    const Continue = e => {
+        e.preventDefault();
+        nextStep()
+    }
+    const BackCon = e => {
+        e.preventDefault();
+        prevStep()
+    }
+
     return (
         <div>
              <div className="input-container">
                 <label>Drop off details:</label>
-                <input type="text" placeholder="Please enter the recipient's name" autoComplete='off' name="dropoffaddress" required value={form.dropoffaddress} onChange={handleChange} />
+                <input type="text" placeholder="Please enter the recipient's name" autoComplete='off' name="dropoffaddress" required value={values.dropoffaddress} onChange={handleChange} />
             </div>
+            <a onClick={Continue}>Next</a>
+            <a onClick={BackCon}>Prev</a> 
         </div>
     )
 }

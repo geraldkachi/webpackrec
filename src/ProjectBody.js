@@ -26,31 +26,9 @@ const ProjectBody = () => {
                 <hr className="headline" />
                 <h2>Welcome to Home Page</h2>
               </div>
-
-              {/* plan */}
               <form className="form">
-    
-                {/* adressess */}
-                {/* <div className="address">
-                    <p className="para">Does your order include multiple pickup or drop off addresses?</p>
-                    <div className="btnbody">
-                      <NavLink to="/" onClick={toggleClass}  >Yes</ NavLink>
-                      <NavLink to="/" onClick={toggleClass1}  >No</ NavLink>
-                    </div>
-                </div> */}
-    
-                {/* form not */}
                 <ProjectForm />
-                {/*  */}
               </form>
-    
-                
-    
-              <div className="pagination">  
-                {/* <Link to="" onClick={nextStep}>Next</Link> */}
-                {/* <Link to="" onClick={prevStep}>Previous</Link> */}
-              </div>
-    
             </div>
           </div>
         </>
