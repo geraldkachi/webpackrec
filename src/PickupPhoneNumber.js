@@ -1,8 +1,8 @@
 import React from 'react'
 import "./styles.css";
 
-const PhoneNumber = ({values, nextStep, prevStep, handleChange}) => {
-    // const {} = values
+const PickupPhoneNumber = ({form, nextStep, prevStep, handleChange}) => {
+    // const {} = form
 
     const Continue = e => {
         e.preventDefault();
@@ -14,10 +14,10 @@ const PhoneNumber = ({values, nextStep, prevStep, handleChange}) => {
     }
 
     return (
-        <div className="phonenumber">
+        <div className="pickUpPhoneNumber">
             <div className="input-container">
                 <label>Pickup Phone Number</label>
-                <input type="text" name="phonenumber" placeholder="pickup-number" autoComplete='off' name="phonenumber" required value={values.phonenumber} onChange={handleChange} />
+                <input type="text" name="pickUpPhoneNumber" placeholder="pickup-number" autoComplete='off' name="pickUpPhoneNumber" required value={form.pickUpPhoneNumber} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Next</a> 
             <a onClick={BackCon}>Back</a> 
@@ -25,4 +25,4 @@ const PhoneNumber = ({values, nextStep, prevStep, handleChange}) => {
     )
 }
 
-export default PhoneNumber
+export default PickupPhoneNumber

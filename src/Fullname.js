@@ -3,11 +3,15 @@ import "./styles.css";
 import {TextField} from "@material-ui/core"
 // import {MuiThemeProvider} from "@material-ui/core"
 
-const Fullname = ({ values, handleChange, nextStep }) => {
-    const { fullname } = values
+const Fullname = ({ form, handleChange, nextStep, prevStep }) => {
+    const { fullname } = form
     const Continue = e => {
         e.preventDefault();
         nextStep()
+    }
+    const BackCon = e => {
+        e.preventDefault();
+        prevStep()
     }
     
 
@@ -22,6 +26,7 @@ const Fullname = ({ values, handleChange, nextStep }) => {
             </div>
         </div>
         <a onClick={Continue}>Next</a> 
+        <a onClick={BackCon}>Back</a>  
     </>
     )
 }

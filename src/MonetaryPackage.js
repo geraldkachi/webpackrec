@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles.css";
 
-const MonetaryPackage = ({values, handleChange, nextStep, prevStep }) => {
+const MonetaryPackage = ({form, handleChange, nextStep, prevStep }) => {
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -14,7 +14,7 @@ const MonetaryPackage = ({values, handleChange, nextStep, prevStep }) => {
         <div className="monetary">
             <div className="input-container">
                 <label>What is the monetary value of your package?</label>
-                <input type="text" placeholder="Value of item" autoComplete='off' name="monetary" required value={values.monetary} onChange={handleChange} />
+                <input type="text" placeholder="Value of item" autoComplete='off' name="monetary" required value={form.monetary} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Next</a>
             <a onClick={BackCon}>Prev</a> 

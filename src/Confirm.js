@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import "./styles.css"
 
-const Confirm = ({values, nextStep, prevStep}) => {
+const Confirm = ({form, nextStep, prevStep }) => {
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -15,39 +15,33 @@ const Confirm = ({values, nextStep, prevStep}) => {
     }
     return (
         <div>
-            <>
-        <>
-          <>
             <List>
               <ListItem>
-                <ListItemText primary="Full Name" secondary={values.fullname} />
+                <ListItemText primary="Full Name" secondary={form.fullName} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Pickup Phone Number" secondary={values.phonenumber} />
+                <ListItemText primary="Pickup Phone Number" secondary={form.pickUpPhoneNumber} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Content Package" secondary={values.contentpackage} />
+                <ListItemText primary="Content Package" secondary={form.contentpackage} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="PickupAddress" secondary={values.pickupphone} />
+                <ListItemText primary="PickupAddress" secondary={form.pickUpAddress} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="MonetaryPackage" secondary={values.monetary} />
+                <ListItemText primary="MonetaryPackage" secondary={form.monetary} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Dropoffdetails" secondary={values.dropoffaddress} />
+                <ListItemText primary="Dropoffdetails" secondary={form.description} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="DropoffphoneNumber" secondary={values.dropoffphone} />
+                <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />
               </ListItem>
             </List>
             <br />
 
-            <a onClick={Continue}>Confirm & Continue</a>
+            <a type='submit' onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Prev</a>
-          </>
-        </>
-      </>
         </div>
     )
 } 

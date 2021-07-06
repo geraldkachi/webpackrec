@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles.css";
 
-const DropoffphoneNumber = ({values, handleChange, nextStep, prevStep }) => {
+const DropoffphoneNumber = ({form, handleChange, nextStep, prevStep }) => {
 
     const Continue = e => {
         e.preventDefault();
@@ -16,7 +16,7 @@ const DropoffphoneNumber = ({values, handleChange, nextStep, prevStep }) => {
         <div>
             <div className="input-container">
                 <label>Drop off phone number</label>
-                <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropoffphone" required value={values.dropoffphone} onChange={handleChange} />
+                <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropoffphone" required value={form.dropoffphone} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Back</a> 

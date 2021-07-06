@@ -1,22 +1,61 @@
 import React, { useState } from 'react'
-import {  NavLink  } from "react-router-dom";
 import ProjectForm from './ProjectForm';
 import "./styles.css";
 
 
 const ProjectBody = () => {
+  const [step, setStep] = useState(0); // this should be 0
 
-    // const [isActive, setActive] = useState(false);
-    // const [isActive1, setActive1] = useState(false);
+  const [form, setForm] = useState({ 
+    fullName: "", 
+    pickUpPhoneNumber: "",
+    pickUpAddress: "", 
+    description: "", 
+    monetary: "", 
+    dropoff: "",  
+    dropOffPhoneNumber: "",
+    dropOffAddress: "",
+    recipientName:''
+  });
+  // const { fullName, pickUpPhoneNumber, dropOffPhoneNumber, description, recipientName, pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
+  // const { pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
 
-    
-    // const toggleClass = () => {
-    //     setActive(!isActive);
-    //   };
-    //   const toggleClass1 = () => {
-    //     setActive1(!isActive1);
-    //   };
-    //   className={isActive && "active"}  className={isActive1 && "active1"}
+
+  const nextStep = () => {
+    setStep(step + 1)
+  }
+  const prevStep = () => {
+    setStep(step - 1)
+  }
+
+  // handleChange
+  const handleChange = e => {
+    //  e.preventDefault();
+    const {name, value} = e.target
+    setForm( oldValues => ({
+      ...oldValues,
+      [name]: value 
+    }))
+    // setForm({ ...form, [input]: value });
+    // setForm({ ...form, [target.name]: target.value });
+  };
+
+  //submit
+  const handleSubmit = e => {
+    e.preventDefault();
+    setForm({
+      fullName: "", 
+      pickUpPhoneNumber: "",
+      pickUpAddress: "", 
+      description: "", 
+      monetary: "", 
+      dropoff: "",  
+      dropOffPhoneNumber: "",
+      dropOffAddress: "",
+      recipientName:''
+    });
+  }
+
     return (
         <>
           <div style={bodyStyle}>
@@ -24,10 +63,9 @@ const ProjectBody = () => {
               <div className="orderform">
                 <h1 style={{textAlign:'center'}}>☘️ Order Form ☘️</h1>
                 <hr className="headline" />
-                <h2>Welcome to Home Page</h2>
               </div>
-              <form className="form">
-                <ProjectForm />
+              <form className="form" onSubmit={handleSubmit}>
+                <ProjectForm {...{step}} {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
               </form>
             </div>
           </div>
