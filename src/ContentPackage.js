@@ -1,6 +1,6 @@
 import React from 'react'
 import "./styles.css";
-// import {TextField} from "@material-ui/core"
+import {TextField} from "@material-ui/core"
 
 
 const ContentPackage = ({form, handleChange, nextStep, prevStep }) => {
@@ -16,7 +16,7 @@ const ContentPackage = ({form, handleChange, nextStep, prevStep }) => {
         <div className="content-package">
             <div className="input-container">
                 <label>Content Package</label>
-                <input type="text" placeholder="Kindly describe the content of your package" autoComplete='off' name="description" required value={form.description} onChange={handleChange} />
+                <textarea type="text" cols='30' rols="5" placeholder="Kindly describe the content of your package" autoComplete='off' name="description" required value={form.description} onChange={handleChange}></textarea>
             </div>
             {/* <div>
                 <label>Content Package</label>

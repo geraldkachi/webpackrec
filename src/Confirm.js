@@ -23,7 +23,7 @@ const Confirm = ({form, nextStep, prevStep }) => {
                 <ListItemText primary="Pickup Phone Number" secondary={form.pickUpPhoneNumber} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Content Package" secondary={form.contentpackage} />
+                <ListItemText primary="Content Package" secondary={form.description} />
               </ListItem>
               <ListItem>
                 <ListItemText primary="PickupAddress" secondary={form.pickUpAddress} />
@@ -32,7 +32,7 @@ const Confirm = ({form, nextStep, prevStep }) => {
                 <ListItemText primary="MonetaryPackage" secondary={form.monetary} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="Dropoffdetails" secondary={form.description} />
+                <ListItemText primary="Dropoffdetails" secondary={form.recipientName} />
               </ListItem>
               <ListItem>
                 <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />

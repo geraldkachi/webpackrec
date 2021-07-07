@@ -28,6 +28,17 @@ body {
     width: 50%;
   }
 } */
+
+textarea {
+  padding-top: 20px;
+  width: 100%;
+  border: 1px solid #757575;
+  height: 120px;
+  /* border-radius: 12px; */
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+}
 .btnbody {
   margin: 20px 0;
 }

@@ -36,7 +36,7 @@ const ProjectForm = ({ step, form, nextStep, prevStep, handleChange, handleSubmi
         return <PickupPhoneNumber {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 3:
         return <ContentPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
-      case 4: 
+      case 4:
         return <MonetaryPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 5: 
         return <Dropoffdetails {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />

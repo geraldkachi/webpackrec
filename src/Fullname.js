@@ -4,7 +4,7 @@ import {TextField} from "@material-ui/core"
 // import {MuiThemeProvider} from "@material-ui/core"
 
 const Fullname = ({ form, handleChange, nextStep, prevStep }) => {
-    const { fullname } = form
+    const { fullName } = form
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -19,10 +19,10 @@ const Fullname = ({ form, handleChange, nextStep, prevStep }) => {
     // console.log(form)
     return (
         <>
-        <div className='fullname'>
+        <div className='fullName'>
             <div className="input-container">
                 <label>Full Name</label>
-                <input type="text" placeholder="full-name" autoComplete='off' name="fullname" required value={fullname} onChange={handleChange} />
+                <input type="text" placeholder="full-name" autoComplete='off' name="fullName" required value={fullName} onChange={handleChange} />
             </div>
         </div>
         <a onClick={Continue}>Next</a> 

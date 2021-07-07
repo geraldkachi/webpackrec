@@ -1,5 +1,7 @@
 import React from 'react'
 import "./styles.css";
+import {TextField} from "@material-ui/core"
+
 
 const DropoffphoneNumber = ({form, handleChange, nextStep, prevStep }) => {
 
@@ -16,7 +18,7 @@ const DropoffphoneNumber = ({form, handleChange, nextStep, prevStep }) => {
         <div>
             <div className="input-container">
                 <label>Drop off phone number</label>
-                <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropoffphone" required value={form.dropoffphone} onChange={handleChange} />
+                <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropOffPhoneNumber" required value={form.dropOffPhoneNumber} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Back</a> 

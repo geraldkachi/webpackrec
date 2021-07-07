@@ -14,8 +14,8 @@ const ProjectBody = () => {
     monetary: "", 
     dropoff: "",  
     dropOffPhoneNumber: "",
+    recipientName:'',
     dropOffAddress: "",
-    recipientName:''
   });
   // const { fullName, pickUpPhoneNumber, dropOffPhoneNumber, description, recipientName, pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
   // const { pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
@@ -36,6 +36,7 @@ const ProjectBody = () => {
       ...oldValues,
       [name]: value 
     }))
+    // nextStep()
     // setForm({ ...form, [input]: value });
     // setForm({ ...form, [target.name]: target.value });
   };
@@ -43,17 +44,17 @@ const ProjectBody = () => {
   //submit
   const handleSubmit = e => {
     e.preventDefault();
-    setForm({
-      fullName: "", 
-      pickUpPhoneNumber: "",
-      pickUpAddress: "", 
-      description: "", 
-      monetary: "", 
-      dropoff: "",  
-      dropOffPhoneNumber: "",
-      dropOffAddress: "",
-      recipientName:''
-    });
+    // setForm({
+    //   fullName: "", 
+    //   pickUpPhoneNumber: "",
+    //   pickUpAddress: "",  
+    //   description: "", 
+    //   monetary: "", 
+    //   dropoff: "",  
+    //   dropOffPhoneNumber: "",
+    //   recipientName:'',
+    //   dropOffAddress: "",
+    // });
   }
 
     return (
