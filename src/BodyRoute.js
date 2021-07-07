@@ -15,7 +15,7 @@ const BodyRoute = () => {
 
     return (
         <div>
-            {loading ? 
+            {loading ?
             <div className="slash" style={{display:'flex', backgroundColor: "#282c34", textAlign:"center", justifyContent:'center', alignItems:'center', height: "100vh"}}>
                 <ClimbingBoxLoader color={'#F37A24'} loading={loading}  size={30} />
             </div>
