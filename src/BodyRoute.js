@@ -26,4 +26,13 @@ const BodyRoute = () => {
     )
 }
 
+const bodyStyle = {
+    display: "flex",
+    justifyContent: "center", 
+    alignItems: "center",
+    margin: "30px",
+    height: '70vh',
+    // textAlign: 'center',
+  };
+
 export default BodyRoute

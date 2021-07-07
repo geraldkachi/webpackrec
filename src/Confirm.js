@@ -1,20 +1,36 @@
-import React from 'react' 
+import React, { useContext } from 'react' 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import "./styles.css"
+import { OrderContext } from './ContextPro';
 
-const Confirm = ({form, nextStep, prevStep }) => {
+const marufUrl = `https://bb1046a18a75.ngrok.io`
+
+const   Confirm = ({form,setForm, nextStep, prevStep }) => {
+  // const { form } = useContext(OrderContext)
+
+  const loadData = async () => {
+    await fetch(`${marufUrl}/api/save`, {
+      method: "POST",
+      mode: "no-cors"
+      // body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => setForm(data))
+      .catch((err) => console.log(err));
+  };
     const Continue = e => {
         e.preventDefault();
-        nextStep()
+        loadData();
+        nextStep();
     }
     const BackCon = e => {
         e.preventDefault();
         prevStep()
     }
     return (
-        <div>
+        <form onSubmit={() =>{}}>
             <List>
               <ListItem>
                 <ListItemText primary="Full Name" secondary={form.fullName} />
@@ -39,11 +55,11 @@ const Confirm = ({form, nextStep, prevStep }) => {
               </ListItem>
             </List>
             <br />
-
             <a type='submit' onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Prev</a>
-        </div>
+        </form>
     )
 } 
 
 export default Confirm
+// ngrok http 3000

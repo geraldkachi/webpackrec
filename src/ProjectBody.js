@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ProjectForm from './ProjectForm';
 import "./styles.css";
 
+const url = 'https://14e805b6561e.ngrok.io'
 
 const ProjectBody = () => {
   const [step, setStep] = useState(0); // this should be 0
@@ -44,17 +45,10 @@ const ProjectBody = () => {
   //submit
   const handleSubmit = e => {
     e.preventDefault();
-    // setForm({
-    //   fullName: "", 
-    //   pickUpPhoneNumber: "",
-    //   pickUpAddress: "",  
-    //   description: "", 
-    //   monetary: "", 
-    //   dropoff: "",  
-    //   dropOffPhoneNumber: "",
-    //   recipientName:'',
-    //   dropOffAddress: "",
-    // });
+    
+    fetch(`${url}/api/orders`)
+      .then(response => response.json())
+      .then(data => console.log(data));
   }
 
     return (
@@ -66,7 +60,7 @@ const ProjectBody = () => {
                 <hr className="headline" />
               </div>
               <form className="form" onSubmit={handleSubmit}>
-                <ProjectForm {...{step}} {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+                <ProjectForm {...{step}} {...{setForm}} {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
               </form>
             </div>
           </div>

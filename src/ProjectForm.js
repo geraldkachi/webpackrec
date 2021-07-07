@@ -14,7 +14,7 @@ import DropoffphoneNumber from "./DropoffphoneNumber";
 import Confirm from "./Confirm";
 import PlaceOrders from "./PlaceOrders"
 
-const ProjectForm = ({ step, form, nextStep, prevStep, handleChange, handleSubmit }) => {
+const ProjectForm = ({ step, form, setForm, nextStep, prevStep, handleChange, handleSubmit }) => {
 
   // form integration
  
@@ -36,16 +36,16 @@ const ProjectForm = ({ step, form, nextStep, prevStep, handleChange, handleSubmi
         return <PickupPhoneNumber {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 3:
         return <ContentPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
-      case 4:
+      case 4: 
         return <MonetaryPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 5: 
         return <Dropoffdetails {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 6: 
-        return <PickupAddress {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
+        return <PickupAddress {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 7: 
         return <DropoffphoneNumber {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 8: 
-      return <Confirm {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      return  <Confirm {...{form}} {...{setForm}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       default:
         break;
   }
