@@ -7,7 +7,6 @@ import { OrderContext } from './ContextPro';
 const Fullname = ({form, handleChange, nextStep, prevStep }) => {
     // const { form } = React.useContext(OrderContext); 
 
-    console.log(form)
     const { fullName } = form
     const Continue = e => {
         e.preventDefault();

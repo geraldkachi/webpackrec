@@ -49,7 +49,7 @@ const PlaceOrders = ({ nextStep }) => {
 
       const handleDelSubmit = e => {
         e.preventDefault();
-        loadData(loadData)
+        loadData()
         setdeliveryState({
             pickUpAddress: "", 
             dropOffAddress: "",
@@ -88,7 +88,7 @@ const PlaceOrders = ({ nextStep }) => {
                         </div>
                     </div> : 
                     // <a style={{marginTop:'20px'}} onClick={Continue}>Next</a> 
-                    <p style={{marginTop: "80px", marginBottom:"10px", textAlign:'center'}} className="para">send an email to info@dotexpress.app</p>
+                    <p style={{marginTop: "80px", marginBottom:"10px", textAlign:'center'}} className="para">Sending an email to info@dotexpress.app</p>
                 }
             </>
         )
@@ -110,19 +110,18 @@ const PlaceOrders = ({ nextStep }) => {
                                     <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropOffAddress" required value={deliveryState.dropOffAddress} onChange={handleDelChange} />
                                 </div>
                             </div>
-                            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
-                                <select name="" id="" onChange={handleDelChange} >
+                            <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'30px'}}>
+                                <select name="" id="" onChange={handleDelChange} style={{padding:'10px'}} >
                                     <option value={deliveryState.express} name="express">Express</option>
                                     <option value={deliveryState.regular} name="regular">Regular</option>
-                                    <option value="">None of the below</option>
                                 </select>
                                 <a type='submit' style={{marginTop: "10px"}}>Submit</a>
                             </div>
                         </div>
-                        <a to="/" onClick={YesStep} className="active1">Yes</a>
+                        <a to="/" style={{marginTop: "60px", textAlign:'center'}} onClick={YesStep} className="active1">Continue</a>
                     </form> : 
                     <div>
-                        <a style={{marginTop:'20px', textAlign:'center'}} onClick={Continue}>Continue</a>
+                        {/* <a style={{marginTop:'20px', textAlign:'center'}} onClick={Continue}>Continue</a> */}
                     </div>
                 }
             </>
@@ -137,11 +136,11 @@ const PlaceOrders = ({ nextStep }) => {
                 <p className="para">Happy to proceed?</p>
                 <div className="btnbody">
                     <a to="/"onClick={Continue} className="active" >Yes</a>
-                    {/* <a to="/"onClick={() => {setShowYes(!showYes)}} className="active" >No</a> */}
+                    <a to="/"onClick={() => {setShowYes(!showYes)}} className="active" >No</a>
                 </div>
             </div> :
             <div>
-
+                <p style={{marginTop: "80px", marginBottom:"10px", textAlign:'center'}} className="para">Order cancelled.</p>
             </div>
             } 
 

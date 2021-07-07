@@ -3,25 +3,40 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import "./styles.css"
-import { OrderContext } from './ContextPro';
+// import { OrderContext } from './ContextPro';
+import axios from "axios"
 
 const marufUrl = `https://bb1046a18a75.ngrok.io`
 
 const   Confirm = ({form,setForm, nextStep, prevStep }) => {
   // const { form } = useContext(OrderContext)
 
+  // const loadData = async () => {
+  //   await fetch(`${marufUrl}/api/save`, {
+  //     method: "POST",
+  //     mode: "no-cors"
+  //     // body: data,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setForm(data))
+  //     .catch((err) => console.log(err));
+  //     console.log(setForm(data))
+  // };
   const loadData = async () => {
-    await fetch(`${marufUrl}/api/save`, {
+    await axios(`${marufUrl}/api/save`, {
       method: "POST",
       mode: "no-cors"
       // body: data,
     })
-      .then((res) => res.json())
+      // .then((res) => res.json())
       .then((data) => setForm(data))
       .catch((err) => console.log(err));
+      console.log(setForm(data))
   };
+
     const Continue = e => {
         e.preventDefault();
+        console.log(loadData())
         loadData();
         nextStep();
     }
