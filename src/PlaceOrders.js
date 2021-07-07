@@ -99,7 +99,7 @@ const PlaceOrders = ({ nextStep, form, handleChange }) => {
                 <p className="para">Happy to proceed?</p>
                 <div className="btnbody">
                     <a to="/"onClick={Continue} className="active" >Yes</a>
-                    <a to="/"onClick={() => {setShowYes(!showYes)}} className="active" >No</a>
+                    {/* <a to="/"onClick={() => {setShowYes(!showYes)}} className="active" >No</a> */}
                 </div>
             </div> :
             <div>
