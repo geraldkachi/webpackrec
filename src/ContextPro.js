@@ -9,11 +9,26 @@ const ContextPro = ({ children }) => {
         pickUpAddress: "", 
         description: "", 
         monetary: "", 
-        dropoff: "",  
+        dropOffAddress: "",
         dropOffPhoneNumber: "",
         recipientName:'',
-        dropOffAddress: "",
+        recipientPhoneNumber:'',
+        deliveryMethod:'',
       });
+
+    //   {
+    //     fullName,
+    //     pickUpPhoneNumber,
+    //     dropOffPhoneNumber,
+    //     description,
+    //     recipientName,
+    //     routeStatus,
+    //     monetary,
+    //     pickUpAddress,
+    //     dropOffAddress,
+    //     deliveryMethod,
+    //     recipientPhoneNumber,
+    //   }
 
     return (
         <OrderContext.Provider value={{ form, setForm }}>

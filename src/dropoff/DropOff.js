@@ -16,7 +16,6 @@ const DropOff = ({form, handleChange}) => {
     return (
         <div>
             <div className="dropoff">
-
             <p className="para">Does your order include multiple pickup or drop off addresses?</p>
             <div className="btnbody">
                 <Link to="/" onClick={toggleClass} className={isActive && "active"} >Yes</ Link>

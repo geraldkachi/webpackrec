@@ -5,10 +5,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import "./styles.css"
 // import { OrderContext } from './ContextPro';
 import axios from "axios"
+import { OrderContext } from './ContextPro';
 
-const marufUrl = `https://bb1046a18a75.ngrok.io`
+const marufUrl = `https://79baa11cd583.ngrok.io`
 
-const   Confirm = ({form,setForm, nextStep, prevStep }) => {
+const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
+  const { form, setForm } = useContext(OrderContext)
+
   // const { form } = useContext(OrderContext)
 
   // const loadData = async () => {
@@ -23,11 +26,12 @@ const   Confirm = ({form,setForm, nextStep, prevStep }) => {
   //     console.log(setForm(data))
   // };
   const loadData = async () => {
-    await axios(`${marufUrl}/api/save`, {
-      method: "POST",
-      mode: "no-cors"
-      // body: data,
-    })
+    await axios.post(`${marufUrl}/api/save`)
+    // , {
+    //   method: "POST",
+    //   mode: "no-cors"
+    //   // body: data,
+    //   }
       // .then((res) => res.json())
       .then((data) => setForm(data))
       .catch((err) => console.log(err));
@@ -45,7 +49,7 @@ const   Confirm = ({form,setForm, nextStep, prevStep }) => {
         prevStep()
     }
     return (
-        <form onSubmit={() =>{}}>
+        <form onSubmit={handleSubmit}>
             <List>
               <ListItem>
                 <ListItemText primary="Full Name" secondary={form.fullName} />
@@ -71,7 +75,7 @@ const   Confirm = ({form,setForm, nextStep, prevStep }) => {
             </List>
             <br />
             <a type='submit' onClick={Continue}>Confirm & Continue</a>
-            <a onClick={BackCon}>Prev</a>
+            <a onClick={BackCon}>Back</a>
         </form>
     )
 } 

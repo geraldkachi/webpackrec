@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import ProjectForm from './ProjectForm';
 import "./styles.css";
 
 const url = 'https://14e805b6561e.ngrok.io'
-
+import { OrderContext } from './ContextPro';
 const ProjectBody = () => {
   const [step, setStep] = useState(0); // this should be 0
+  const { form, setForm } = useContext(OrderContext)
 
-  const [form, setForm] = useState({ 
-    fullName: "", 
-    pickUpPhoneNumber: "",
-    pickUpAddress: "", 
-    description: "", 
-    monetary: "", 
-    dropoff: "",  
-    dropOffPhoneNumber: "",
-    recipientName:'',
-    dropOffAddress: "",
-  });
+  // const [form, setForm] = useState({ 
+  //   fullName: "", 
+  //   pickUpPhoneNumber: "",
+  //   pickUpAddress: "", 
+  //   description: "", 
+  //   monetary: "", 
+  //   dropoff: "",  
+  //   dropOffPhoneNumber: "",
+  //   recipientName:'',
+  //   dropOffAddress: "",
+  // });
   // const { fullName, pickUpPhoneNumber, dropOffPhoneNumber, description, recipientName, pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
   // const { pickUpAddress, dropOffAddress, deliveryMethod } = req.body;
 

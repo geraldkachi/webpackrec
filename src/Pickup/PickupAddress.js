@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import "../styles.css"
 import { NavLink } from "react-router-dom"
 // import PropTypes from 'prop-types'
 import {TextField} from "@material-ui/core"
+import { OrderContext } from '../ContextPro'
 
 
- const PickupAddress = ({form, handleChange, nextStep, prevStep }) => {
+ const PickupAddress = ({ handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
+
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -26,7 +29,7 @@ import {TextField} from "@material-ui/core"
                         
                     </div>
                     <a onClick={Continue}>Next</a>
-                    <a onClick={BackCon}>Prev</a> 
+                    <a onClick={BackCon}>Back</a> 
                 </div>
             </div>
         )

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { OrderContext } from './ContextPro';
 import "./styles.css";
-import {TextField} from "@material-ui/core"
+// import {TextField} from "@material-ui/core"
 
 
-const Dropoffdetails = ({ form, handleChange, nextStep, prevStep }) => {
+const RecipientName = ({ handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
 
     const Continue = e => {
         e.preventDefault();
@@ -21,9 +23,9 @@ const Dropoffdetails = ({ form, handleChange, nextStep, prevStep }) => {
                 <input type="text" placeholder="Please enter the recipient's name" autoComplete='off' name="recipientName" required value={form.recipientName} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Next</a>
-            <a onClick={BackCon}>Prev</a> 
+            <a onClick={BackCon}>Back</a> 
         </div>
     )
 }
 
-export default Dropoffdetails
+export default RecipientName

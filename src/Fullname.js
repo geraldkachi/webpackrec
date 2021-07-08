@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./styles.css";
-import {TextField} from "@material-ui/core"
 import { OrderContext } from './ContextPro';
 // import {MuiThemeProvider} from "@material-ui/core"
 
-const Fullname = ({form, handleChange, nextStep, prevStep }) => {
-    // const { form } = React.useContext(OrderContext); 
+const Fullname = ({handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
 
     const { fullName } = form
     const Continue = e => {

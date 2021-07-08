@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 // import {  Link  } from "react-router-dom";
 import PickupAddress from "./Pickup/PickupAddress"
@@ -9,12 +9,13 @@ import "./styles.css";
 import Fullname from "./Fullname"
 import ContentPackage from "./ContentPackage";
 import MonetaryPackage from "./MonetaryPackage";
-import Dropoffdetails from "./Dropoffdetails";
+import RecipientName from "./RecipientName";
 import DropoffphoneNumber from "./DropoffphoneNumber";
 import Confirm from "./Confirm";
 import PlaceOrders from "./PlaceOrders"
 
-const ProjectForm = ({ step, form, setForm, nextStep, prevStep, handleChange, handleSubmit }) => {
+const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) => {
+
 
   // form integration
  
@@ -29,30 +30,32 @@ const ProjectForm = ({ step, form, setForm, nextStep, prevStep, handleChange, ha
 
   switch (step) {
       case 0:
-        return <PlaceOrders {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PlaceOrders  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 1:
-        return <Fullname {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <Fullname  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 2:
-        return <PickupPhoneNumber {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PickupPhoneNumber {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 3:
-        return <ContentPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
+        return <ContentPackage {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
       case 4: 
-        return <MonetaryPackage {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <MonetaryPackage  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 5: 
-        return <Dropoffdetails {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <RecipientName  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 6: 
-        return <PickupAddress {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PickupAddress  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 7: 
-        return <DropoffphoneNumber {...{form}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <DropoffphoneNumber  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 8: 
-      return  <Confirm {...{form}} {...{setForm}} {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      return  <WhichofThese {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      case 9: 
+      return  <Confirm {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       default:
         break;
   }
 
   return (
     <>
-    <h2 style={{textAlign: 'center'}}>Thank You for Submitting</h2>
+      <h2 style={{textAlign: 'center'}}>Thank You for Submitting</h2>
     </>
   );
 };

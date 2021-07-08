@@ -1,4 +1,6 @@
 const webpack = require("webpack");
+// require("babel-core/register");
+// require("babel-polyfill");
 const path = require("path");
 
 module.exports = {

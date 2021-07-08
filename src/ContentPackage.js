@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./styles.css";
-import {TextField} from "@material-ui/core"
+import { OrderContext } from './ContextPro';
 
 
-const ContentPackage = ({form, handleChange, nextStep, prevStep }) => {
+const ContentPackage = ({ handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
+
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -23,7 +25,7 @@ const ContentPackage = ({form, handleChange, nextStep, prevStep }) => {
                 <TextField placeholder="Kindly describe the content of your package" autoComplete='off' name="description" required value={form.description} onChange={handleChange} />
             </div> */}
             <a onClick={Continue}>Next</a>
-            <a onClick={BackCon}>Prev</a> 
+            <a onClick={BackCon}>Back</a>
         </div>
     )
 }

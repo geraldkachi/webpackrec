@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./styles.css";
-import {TextField} from "@material-ui/core"
+import { OrderContext } from './ContextPro';
 
 
-const DropoffphoneNumber = ({form, handleChange, nextStep, prevStep }) => {
+const DropoffphoneNumber = ({ handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
 
     const Continue = e => {
         e.preventDefault();
@@ -18,7 +19,7 @@ const DropoffphoneNumber = ({form, handleChange, nextStep, prevStep }) => {
         <div>
             <div className="input-container">
                 <label>Drop off phone number</label>
-                <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropOffPhoneNumber" required value={form.dropOffPhoneNumber} onChange={handleChange} />
+                <input type="tel" placeholder="Drop off phone number" autoComplete='off' name="dropOffPhoneNumber" required value={form.dropOffPhoneNumber} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Back</a> 

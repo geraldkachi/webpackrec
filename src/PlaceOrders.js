@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./styles.css"
+import axios from "axios"
+import { OrderContext } from './ContextPro'
 
 
-const marufUrl = `https://bb1046a18a75.ngrok.io`
+const marufUrl = `https://79baa11cd583.ngrok.io`
 const PlaceOrders = ({ nextStep }) => {
+    const { form, setForm } = useContext(OrderContext)
+
+    
 	const [showYes, setShowYes] = useState(true);
 	const [showNo, setShowNo] = useState(true);
 	const [step, setStep] = useState(0);
 
-    const [ deliveryState , setdeliveryState] = useState({ 
-        pickUpAddress: "", 
-        dropOffAddress: "",
-        regula: "",
-        express:''
-      });
+    // const [ form , setForm] = useState({ 
+    //     pickUpAddress: "", 
+    //     dropOffAddress: "",
+    //     regula: "",
+    //     express:''
+    //   });
 
     const YesStep = () => {
         setStep(stepvalue => stepvalue + 1)
@@ -29,32 +34,38 @@ const PlaceOrders = ({ nextStep }) => {
         // showYes()
     }
 
-    const handleDelChange = e => {
+    const handleChange = e => {
         const { name, value } = e.target
-        setdeliveryState( oldValues => ({
-          ...oldValues,
-          [name]: value 
-        }))
+        setForm({...form, [name]: value})
+        
       };
 
     //   const loadData = async () => {
-    //     await fetch(`${marufUrl}/api`, {
+    //     await axios.post(`${marufUrl}/api/deliveryprice`)
+    //     .then((res) => {
+    //         console.log(data)
+    //         setForm({deliveryState: res.data})
+    //       })
+    //       .catch((err) => console.log(err));
+    //   };
+
+    //   const loadData = async () => {
+    //     await fetch(`${marufUrl}/api/deliveryprice`, {
     //         method: "POST",
     //         mode:'no-cors'
     //     })
     //       .then((res) => res.json())
-    //       .then((data) => setDatas(data))
+    //       .then((data) => setForm(data))
     //       .catch((err) => console.log(err));
     //   };
 
       const handleDelSubmit = e => {
         e.preventDefault();
         loadData()
-        setdeliveryState({
+        setForm({
             pickUpAddress: "", 
             dropOffAddress: "",
-            regula: "",
-            express:''
+            deliveryMethod: "",
         })
       }
 
@@ -96,30 +107,30 @@ const PlaceOrders = ({ nextStep }) => {
         return (
             <>
                 {showYes ? 
-                    <form onSubmit={handleDelSubmit} className="drop-off-add">
+                    <div onSubmit={handleDelSubmit} className="drop-off-add">
                         <h1></h1>
                         <div className={showYes && dropStyle}>
-                            <p className="para">Place you input PickUp Address and DropOff Address</p>
+                            <p className="para">Place your input PickUp Address and DropOff Address</p>
                             <div>
                                 <div className="input-container">
                                     <label>PickUp Address</label>
-                                    <input type="text" placeholder="Drop off phone number" autoComplete='off' name="pickUpAddress" required value={deliveryState.pickUpAddress} onChange={handleDelChange} />
+                                    <input type="text" placeholder="Drop off phone number" autoComplete='off' name="pickUpAddress" required value={form.pickUpAddress} onChange={handleChange} />
                                 </div>
                                 <div className="input-container">
                                     <label>Drop off Address</label>
-                                    <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropOffAddress" required value={deliveryState.dropOffAddress} onChange={handleDelChange} />
+                                    <input type="text" placeholder="Drop off phone number" autoComplete='off' name="dropOffAddress" required value={form.dropOffAddress} onChange={handleChange} />
                                 </div>
                             </div>
                             <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'30px'}}>
-                                <select name="" id="" onChange={handleDelChange} style={{padding:'10px'}} >
-                                    <option value={deliveryState.express} name="express">Express</option>
-                                    <option value={deliveryState.regular} name="regular">Regular</option>
+                                <select name="deliveryMethod" value={form.deliveryMethod} id="deliveryMethod" onChange={handleChange} style={{padding:'7px', borderRadius:'10px'}}>
+                                    <option value="express" name="express">Express</option>
+                                    <option value="regular" name="regular">Regular</option>
                                 </select>
                                 <a type='submit' style={{marginTop: "10px"}}>Submit</a>
                             </div>
                         </div>
                         <a to="/" style={{marginTop: "60px", textAlign:'center'}} onClick={YesStep} className="active1">Continue</a>
-                    </form> : 
+                    </div> : 
                     <div>
                         {/* <a style={{marginTop:'20px', textAlign:'center'}} onClick={Continue}>Continue</a> */}
                     </div>

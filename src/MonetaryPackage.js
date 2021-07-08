@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./styles.css";
-import {TextField} from "@material-ui/core"
+import { OrderContext } from './ContextPro';
 
 
-const MonetaryPackage = ({form, handleChange, nextStep, prevStep }) => {
+const MonetaryPackage = ({ handleChange, nextStep, prevStep }) => {
+    const { form, setForm } = useContext(OrderContext)
+
     const Continue = e => {
         e.preventDefault();
         nextStep()
@@ -19,7 +21,7 @@ const MonetaryPackage = ({form, handleChange, nextStep, prevStep }) => {
                 <input type="text" placeholder="Value of item" autoComplete='off' name="monetary" required value={form.monetary} onChange={handleChange} />
             </div>
             <a onClick={Continue}>Next</a>
-            <a onClick={BackCon}>Prev</a> 
+            <a onClick={BackCon}>Back</a> 
         </div>
     )
 }
