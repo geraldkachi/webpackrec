@@ -21,7 +21,7 @@ const DropoffphoneNumber = ({ handleChange, nextStep, prevStep }) => {
                 <label>Drop off phone number</label>
                 <input type="tel" placeholder="Drop off phone number" autoComplete='off' name="dropOffPhoneNumber" required value={form.dropOffPhoneNumber} onChange={handleChange} />
             </div>
-            <a onClick={Continue}>Confirm & Continue</a>
+            <a onClick={Continue}>Next</a>
             <a onClick={BackCon}>Back</a> 
         </div>
     )

@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import "../styles.css"
 import { NavLink } from "react-router-dom"
-// import PropTypes from 'prop-types'
-import {TextField} from "@material-ui/core"
 import { OrderContext } from '../ContextPro'
 
 
@@ -25,15 +23,13 @@ import { OrderContext } from '../ContextPro'
                 <div className="name">
                     <div className="input-container">
                         <label>Pick Address</label>
-                    <input type="text" placeholder="pick-up-address" autoComplete='off' name="pickUpAddress" required value={pickUpAddress} onChange={handleChange} />
-                        
+                        <input type="text" placeholder="pick-up-address" autoComplete='no' name="pickUpAddress" required value={pickUpAddress} onChange={handleChange} />
                     </div>
                     <a onClick={Continue}>Next</a>
                     <a onClick={BackCon}>Back</a> 
                 </div>
             </div>
         )
-    
 }
 
 export default PickupAddress

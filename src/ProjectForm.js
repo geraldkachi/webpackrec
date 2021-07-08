@@ -13,6 +13,8 @@ import RecipientName from "./RecipientName";
 import DropoffphoneNumber from "./DropoffphoneNumber";
 import Confirm from "./Confirm";
 import PlaceOrders from "./PlaceOrders"
+import WhichofThese from "./WhichofThese";
+import AllForm from "./AllForm";
 
 const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) => {
 
@@ -29,8 +31,14 @@ const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) =
   // const values = {  fullname, pickupphone, pickupaddress, dropoffphone, dropoffaddress, contentpackage, monetary, dropoffaddress, phonenumber  }
 
   switch (step) {
+
+    case 0: 
+    // return <AllForm {...{nextStep}} {...{prevStep}} />
+
+
+
       case 0:
-        return <PlaceOrders  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PlaceOrders {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 1:
         return <Fullname  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 2:

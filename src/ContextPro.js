@@ -14,6 +14,10 @@ const ContextPro = ({ children }) => {
         recipientName:'',
         recipientPhoneNumber:'',
         deliveryMethod:'',
+        customerDetails: {
+            name: "",
+            phoneNumber: ""
+        }
       });
 
     //   {

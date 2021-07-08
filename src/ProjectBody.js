@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import ProjectForm from './ProjectForm';
 import "./styles.css";
 
-const url = 'https://14e805b6561e.ngrok.io'
+const url = 'https://174a0e1b0ba0.ngrok.io/api/orders'
 import { OrderContext } from './ContextPro';
 const ProjectBody = () => {
   const [step, setStep] = useState(0); // this should be 0
@@ -36,7 +36,7 @@ const ProjectBody = () => {
     const {name, value} = e.target
     setForm( oldValues => ({
       ...oldValues,
-      [name]: value 
+      [name]: value
     }))
     // nextStep()
     // setForm({ ...form, [input]: value });
@@ -47,7 +47,7 @@ const ProjectBody = () => {
   const handleSubmit = e => {
     e.preventDefault();
     
-    fetch(`${url}/api/orders`)
+    fetch(`${url}`)
       .then(response => response.json())
       .then(data => console.log(data));
   }
@@ -75,7 +75,8 @@ const bodyStyle = {
     justifyContent: "center", 
     alignItems: "center",
     margin: "30px",
-    height: '70vh',
+    // height: '70vh',
+    height: 'maxContent',
     // textAlign: 'center',
   };
 
