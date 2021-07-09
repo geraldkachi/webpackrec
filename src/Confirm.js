@@ -7,7 +7,7 @@ import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro';
 
-const marufUrl = `https://b562e6160caa.ngrok.io/api/save`
+const marufUrl = `hhttp://912e3e4813e8.ngrok.io/api/save`
 
 const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const { form, setForm } = useContext(OrderContext)
@@ -29,7 +29,14 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const loadData =  () => {
      axios.post(`${marufUrl}`, {
       fullName: form.fullName,
-      pickUpPhoneNumber: form.pickUpPhoneNumber
+      pickUpPhoneNumber: form.pickUpPhoneNumber,
+      pickUpPhoneNumber: form.pickUpPhoneNumber,
+      description: form.description,
+      pickUpAddress: form.pickUpAddress,
+      monetary: form.monetary,
+      recipientName: form.recipientName,
+      dropOffPhoneNumber: form.dropOffPhoneNumber,
+      customerDetails: form.customerDetails,
     })
 
       // .then((res) => res.json())

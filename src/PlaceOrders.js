@@ -4,7 +4,7 @@ import axios from "axios"
 import { OrderContext } from './ContextPro'
 
 
-const marufUrl = `https://bce65ef09f81.ngrok.io/api/deliveryprice`
+const marufUrl = `http://912e3e4813e8.ngrok.io/api/deliveryprice`
 const PlaceOrders = ({ nextStep }) => {
     const { form, setForm } = useContext(OrderContext)
 
