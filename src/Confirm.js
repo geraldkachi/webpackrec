@@ -40,7 +40,8 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
     })
 
       // .then((res) => res.json())
-      .then((data) => setForm(data))
+      .then((res) => setForm(res.data, {...form}))
+      console.log(setForm(res.data, {...form}))
       .catch((err) => console.log(err));
       console.log(setForm(data))
   };
