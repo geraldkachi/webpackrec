@@ -7,7 +7,7 @@ import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro';
 
-const marufUrl = `hhttp://912e3e4813e8.ngrok.io/api/save`
+const marufUrl = `http://fab314050867.ngrok.io/api/save`
 
 const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const { form, setForm } = useContext(OrderContext)
@@ -36,26 +36,33 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
       monetary: form.monetary,
       recipientName: form.recipientName,
       dropOffPhoneNumber: form.dropOffPhoneNumber,
-      customerDetails: form.customerDetails,
+      routeStatus: form.routeStatus,
     })
 
       // .then((res) => res.json())
-      .then((res) => setForm(res.data, {...form}))
-      console.log(setForm(res.data, {...form}))
+      console.log(form)
+      .then((res) => {
+        setForm({form})
+        nextStep();
+      })
+      console.log(setForm({...form}))
       .catch((err) => console.log(err));
-      console.log(setForm(data))
+      console.log(setForm({...form}))
   };
 
     const Continue = e => {
         e.preventDefault();
         console.log(loadData())
         loadData();
-        nextStep();
+        // nextStep();
+        console.log(form.routeStatus)
     }
+
     const BackCon = e => {
         e.preventDefault();
         prevStep()
     }
+
     return (
         <div>
             <List>
@@ -80,9 +87,9 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
               <ListItem>
                 <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />
               </ListItem>
-              {/* <ListItem>
-                <ListItemText primary="SelectedOption" secondary={form.customerDetails} />
-              </ListItem> */}
+              <ListItem>
+                <ListItemText primary="SelectedOption" secondary={form.routeStatus} />
+              </ListItem>
             </List>
             <br />
             <a type='submit' onClick={Continue}>Confirm & Continue</a>
@@ -93,3 +100,5 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
 
 export default Confirm
 // ngrok http 3000
+// node 
+// require('http')

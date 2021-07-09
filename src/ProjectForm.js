@@ -40,19 +40,19 @@ const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) =
       case 0:
         return <PlaceOrders {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 1:
-        return <Fullname  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <Fullname {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 2:
         return <PickupPhoneNumber {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 3:
         return <ContentPackage {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} /> 
       case 4: 
-        return <MonetaryPackage  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <MonetaryPackage {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 5: 
-        return <RecipientName  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <RecipientName {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 6: 
-        return <PickupAddress  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <PickupAddress {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 7: 
-        return <DropoffphoneNumber  {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+        return <DropoffphoneNumber {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 8: 
       return  <WhichofThese {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 9: 
