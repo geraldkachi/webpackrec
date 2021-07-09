@@ -31,7 +31,7 @@ const WhichofThese = ({  nextStep }) => {
       <p className="para"> Which of these are you?</p>
       <div style={{marginTop: "20px", marginBottom: "20px"}}>
         <select value={form.customerDetails} name="customerDetails" onChange={handleCustomer}>Pick up
-            <option name="pickup" value="pickup">Drop off</option>
+            <option name="pickup" value="pickup">Pick up</option>
             <option name="dropoff" value="dropoff">Drop off</option>
             <option name="none" value="none">None of the above</option>
         </select>

@@ -56,7 +56,7 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
         prevStep()
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <div>
             <List>
               <ListItem>
                 <ListItemText primary="Full Name" secondary={form.fullName} />
@@ -79,14 +79,14 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
               <ListItem>
                 <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />
               </ListItem>
-              <ListItem>
+              {/* <ListItem>
                 <ListItemText primary="SelectedOption" secondary={form.customerDetails} />
-              </ListItem>
+              </ListItem> */}
             </List>
             <br />
             <a type='submit' onClick={Continue}>Confirm & Continue</a>
             <a onClick={BackCon}>Back</a>
-        </form>
+        </div>
     )
 } 
 
