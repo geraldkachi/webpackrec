@@ -4,11 +4,10 @@ import axios from "axios"
 import { OrderContext } from './ContextPro'
 
 
-const marufUrl = `https://174a0e1b0ba0.ngrok.io/api/deliveryprice`
+const marufUrl = `https://bce65ef09f81.ngrok.io/api/deliveryprice`
 const PlaceOrders = ({ nextStep }) => {
     const { form, setForm } = useContext(OrderContext)
 
-    
 	const [showYes, setShowYes] = useState(true);
 	const [showNo, setShowNo] = useState(true);
 	const [step, setStep] = useState(0);
@@ -34,17 +33,19 @@ const PlaceOrders = ({ nextStep }) => {
 
       const loadData = () => {
         axios.post(`${marufUrl}`, {
-            method: 'POST',
-            mode:'no-cors'
             // headers: myHeaders,
-            // body: urlencoded,
+               deliveryMethod:  form.deliveryMethod,
+               pickUpAddress: form.pickUpAddress,
+               dropOffAddress: form.dropOffAddress,
             // redirect: 'follow'
         })
         .then((res) => {
             console.log(form)
-            setForm({form: res.data})
+            setForm({...form, amount: res.data.deliveryOutcome.amountToPay})
             console.log({form: res.data})
             console.log(res)
+            console.log(form.deliveryMethod)
+            YesStep()
           })
           .catch((err) => console.log(err));
       };
@@ -62,12 +63,12 @@ const PlaceOrders = ({ nextStep }) => {
       const handleDelSubmit = e => {
         e.preventDefault();
         loadData()
-        setForm({
-            pickUpAddress: "", 
-            dropOffAddress: "",
-            deliveryMethod: "",
-        })
-        YesStep()
+        // setForm({
+        //     pickUpAddress: "", 
+        //     dropOffAddress: "",
+        //     deliveryMethod: "",
+        // })
+        
         console.log(form)
       }
 
@@ -142,16 +143,16 @@ const PlaceOrders = ({ nextStep }) => {
         case 3: 
         return (
             <>
-            <form onSubmit={handleDelSubmit}>
             {showYes ?
                 <div>
-                <p className="para">PicKup Address:{form.pickUpAddress}</p>
-                <p className="para">Drop Off Address:{form.dropOffAddress}</p>
+                <p className="para">PicKup Address:     {form.pickUpAddress}</p>
+                <p className="para">Drop Off Address:     {form.dropOffAddress}</p>
                 {console.log(form.pickUpAddress)}
                 {console.log(form.dropOffAddress)}
+                {console.log(form.deliveryMethod)}
                 <p className="para">Delivery price.</p>
-                <p className="para" style={{marginTop:'10px'}}>This delivery will cost you N{}</p>
-                <p className="para">Happy to proceed?</p>
+                <p className="para" style={{marginTop:'10px'}}>This delivery will cost you N{form.amount}</p>
+                <p className="para">Happy to proceed?</p>{form.deliveryMethod}
                 <div className="btnbody">
                     <a to="/"onClick={Continue} className="active" >Yes</a>
                     <a to="/"onClick={() => {setShowYes(!showYes)}} className="active" >No</a>
@@ -161,8 +162,6 @@ const PlaceOrders = ({ nextStep }) => {
                 <p style={{marginTop: "80px", marginBottom:"10px", textAlign:'center'}} className="para">Order cancelled.</p>
             </div>
             } 
-
-            </form>
             </>
         )
     
@@ -189,3 +188,6 @@ const dropStyle = {
 }
 
 export default PlaceOrders
+// in your terminal 
+// node
+// require('http')  this is to viiew status code

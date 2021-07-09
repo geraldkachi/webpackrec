@@ -25,13 +25,13 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   //     .catch((err) => console.log(err));
   //     console.log(setForm(data))
   // };
-  const loadData = async () => {
-    await axios.post(`${marufUrl}`, {
-        method: 'POST',
-        // headers: myHeaders,
-        // body: urlencoded,
-        // redirect: 'follow'
+
+  const loadData =  () => {
+     axios.post(`${marufUrl}`, {
+      fullName: form.fullName,
+      pickUpPhoneNumber: form.pickUpPhoneNumber
     })
+
       // .then((res) => res.json())
       .then((data) => setForm(data))
       .catch((err) => console.log(err));
