@@ -4,7 +4,7 @@ import axios from "axios"
 import { OrderContext } from './ContextPro'
 
 
-const marufUrl = `http://fab314050867.ngrok.io/api/deliveryprice`
+const marufUrl = `https://7feb72321b62.ngrok.io/api/deliveryprice`
 const PlaceOrders = ({ nextStep }) => {
     const { form, setForm } = useContext(OrderContext)
 
@@ -125,7 +125,6 @@ const PlaceOrders = ({ nextStep }) => {
                             </div>
                             <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'30px'}}>
                                 <select name="deliveryMethod" value={form.deliveryMethod} id="deliveryMethod" onChange={handleChange} style={{padding:'7px', borderRadius:'10px'}}>
-                                    <option value="" name="">Select</option>
                                     <option value="express" name="express">Express</option>
                                     <option value="regular" name="regular">Regular</option>
                                 </select>

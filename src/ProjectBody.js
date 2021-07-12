@@ -9,10 +9,10 @@ const ProjectBody = () => {
   const { form, setForm } = useContext(OrderContext)
 
   // const [form, setForm] = useState({ 
-  //   fullName: "", 
+  //   fullName: "",
   //   pickUpPhoneNumber: "",
   //   pickUpAddress: "", 
-  //   description: "", 
+  //   description: "",
   //   monetary: "", 
   //   dropoff: "",  
   //   dropOffPhoneNumber: "",
@@ -34,7 +34,7 @@ const ProjectBody = () => {
   const handleChange = e => {
     //  e.preventDefault();
     const {name, value} = e.target
-    setForm( oldValues => ({
+    setForm( oldValues => ({ 
       ...oldValues,
       [name]: value
     }))

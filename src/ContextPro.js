@@ -12,7 +12,7 @@ const ContextPro = ({ children }) => {
         dropOffAddress: "",
         dropOffPhoneNumber: "",
         recipientName:'',
-        deliveryMethod:'',
+        deliveryMethod:'express',
         amount: "",
         routeStatus: "",
         // customerDetails: {

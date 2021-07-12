@@ -55,8 +55,8 @@ const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) =
         return <DropoffphoneNumber {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 8: 
       return  <WhichofThese {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
-      case 9: 
-      return  <Confirm {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      // case 9: 
+      // return  <Confirm {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       default:
         break;
   }

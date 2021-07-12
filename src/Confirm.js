@@ -7,7 +7,7 @@ import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro';
 
-const marufUrl = `http://fab314050867.ngrok.io/api/save`
+const marufUrl = `https://b08d5ae3f280.ngrok.io/api/save`
 
 const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const { form, setForm } = useContext(OrderContext)
@@ -42,7 +42,7 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
       // .then((res) => res.json())
       console.log(form)
       .then((res) => {
-        setForm({form})
+        setForm({...form, checkoutLink: res.data.checkoutLink})
         nextStep();
       })
       console.log(setForm({...form}))
@@ -88,7 +88,7 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
                 <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />
               </ListItem>
               <ListItem>
-                <ListItemText primary="SelectedOption" secondary={form.routeStatus} />
+                {/* <ListItemText primary="SelectedOption" secondary={form.routeStatus} /> */}
               </ListItem>
             </List>
             <br />
