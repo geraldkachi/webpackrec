@@ -101,8 +101,8 @@ const WhichofThese = ({ nextStep, prevStep }) => {
         </div>
         <div>
             <p>routeStatus {"From Content RouteStatus" +  form.routeStatus}</p>
-            
-            {console.log("from content" + form.deliveryMethod , form)}
+
+            {console.log("from content Help"  , form.routeStatus)}
         </div>
       </div>
       <a onClick={Continue}>Next</a>
