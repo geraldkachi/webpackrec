@@ -7,7 +7,7 @@ import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro';
 
-const marufUrl = `https://9a1418f0c4b3.ngrok.io/api/save`
+const marufUrl = `https://delivery-flow.herokuapp.com/api/save`
 
 const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const { form, setForm } = useContext(OrderContext)

@@ -5,7 +5,7 @@ import { OrderContext } from './ContextPro'
 import AllForm from './AllForm'
 
 
-const marufUrl = `https://9a1418f0c4b3.ngrok.io/api/deliveryprice`
+const marufUrl = `https://delivery-flow.herokuapp.com/api/deliveryprice`
 const PlaceOrders = ({ nextStep, prevStep }) => {
     const { form, setForm } = useContext(OrderContext)
 
