@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react'
 import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro'
+import AllForm from './AllForm'
 
 
-const marufUrl = `https://7feb72321b62.ngrok.io/api/deliveryprice`
-const PlaceOrders = ({ nextStep }) => {
+const marufUrl = `https://9a1418f0c4b3.ngrok.io/api/deliveryprice`
+const PlaceOrders = ({ nextStep, prevStep }) => {
     const { form, setForm } = useContext(OrderContext)
 
 	const [showYes, setShowYes] = useState(true);
@@ -131,7 +132,7 @@ const PlaceOrders = ({ nextStep }) => {
                                 <a type='submit' onClick={handleDelSubmit} style={{marginTop: "10px"}}>Submit</a>
                             </div>
                         </div>
-                        <a to="/" style={{marginTop: "60px", textAlign:'center'}} onClick={YesStep} className="active1">Continue</a>
+                        {/* <a to="/" style={{marginTop: "60px", textAlign:'center'}} onClick={YesStep} className="active1">Continue</a> */}
                     </div> : 
                     <div>
                         {/* <a style={{marginTop:'20px', textAlign:'center'}} onClick={Continue}>Continue</a> */}
@@ -163,6 +164,8 @@ const PlaceOrders = ({ nextStep }) => {
             } 
             </>
         )
+        case 4:
+            return <AllForm {...{nextStep}} {...{prevStep}} />
     
         default:
             break;

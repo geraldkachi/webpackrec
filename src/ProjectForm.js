@@ -15,8 +15,12 @@ import Confirm from "./Confirm";
 import PlaceOrders from "./PlaceOrders"
 import WhichofThese from "./WhichofThese";
 import AllForm from "./AllForm";
+import { OrderContext } from './ContextPro';
+
 
 const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) => {
+  const { form, setForm } = useContext(OrderContext)
+
 
 
   // form integration
@@ -39,6 +43,9 @@ const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) =
 
       case 0:
         return <PlaceOrders {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      // case 1:
+      //   return <AllForm {...{nextStep}} {...{prevStep}} {...{handleChange}} />
+      
       case 1:
         return <Fullname {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 2:
@@ -55,15 +62,27 @@ const ProjectForm = ({ step, nextStep, prevStep, handleChange, handleSubmit }) =
         return <DropoffphoneNumber {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       case 8: 
       return  <WhichofThese {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
-      // case 9: 
-      // return  <Confirm {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
+      case 9: 
+      return  <Confirm {...{nextStep}} {...{prevStep}} {...{handleChange}} {...{handleSubmit}} />
       default:
         break;
   }
 
   return (
     <>
-      <h2 style={{textAlign: 'center'}}>Thank You for Submitting</h2>
+      <div>
+        <h2 style={{textAlign: 'center'}}>Thank You for Submitting</h2>
+        <div>
+            <div style={{margin:'20px'}}>
+              <p> Phone-Number: {form.pickUpPhoneNumber}</p>
+              <p>Monetary: {form.monetary}</p>
+              <p>Description: {form.description}</p>
+            </div>
+            <div style={{margin:'20px'}}>
+              <a href={form.checkoutLink}>Pay Here</a>
+            </div>
+        </div>
+      </div>
     </>
   );
 };

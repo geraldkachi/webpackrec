@@ -14,26 +14,10 @@ const ContextPro = ({ children }) => {
         recipientName:'',
         deliveryMethod:'express',
         amount: "",
-        routeStatus: "",
-        // customerDetails: {
-        //     name: "",
-        //     phoneNumber: ""
-        // }
-      });
+        routeStatus: "pickup",
+        checkoutLink: ""
 
-    //   {
-    //     fullName,
-    //     pickUpPhoneNumber,
-    //     dropOffPhoneNumber,
-    //     description,
-    //     recipientName,
-    //     routeStatus,
-    //     monetary,
-    //     pickUpAddress,
-    //     dropOffAddress,
-    //     deliveryMethod,
-    //     recipientPhoneNumber,
-    //   }
+      });
 
     return (
         <OrderContext.Provider value={{ form, setForm }}>

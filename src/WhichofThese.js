@@ -3,7 +3,7 @@ import { OrderContext } from "./ContextPro";
 import "./styles.css";
 import axios from "axios"
 
-const marufUrl = `https://7feb72321b62.ngrok.io/api/save`
+const marufUrl = `https://4efc3c872c8c.ngrok.io/api/save`
 const WhichofThese = ({ nextStep, prevStep }) => {
   const { form, setForm } = useContext(OrderContext)
 
@@ -19,21 +19,16 @@ const WhichofThese = ({ nextStep, prevStep }) => {
      dropOffPhoneNumber: form.dropOffPhoneNumber,
      routeStatus: form.routeStatus,
    })
-
-     // .then((res) => res.json())
-     console.log(form)
      .then((res) => {
-       setForm({form})
+       setForm({...form})
        nextStep();
      })
-     console.log(setForm({...form}))
      .catch((err) => console.log(err));
-     console.log(setForm({...form}))
  };
 
   const Continue = (e) => {
     e.preventDefault();
-    loadData()
+    // loadData()
     nextStep();
   };
   const BackCon = (e) => {
@@ -42,10 +37,11 @@ const WhichofThese = ({ nextStep, prevStep }) => {
   };
 
   const handleCustomer = e => {
-    // console.log(e)
+    setForm({...form, routeStatus: e.target.value})
+    //  it handle the select > option values
+   // console.log(e)
     // const {value} = e.target;
     // setForm(value)
-    setForm(e.target.value)
 
     // if(value === "pickup" || "dropoff"){
     //   loadData()
@@ -56,6 +52,11 @@ const WhichofThese = ({ nextStep, prevStep }) => {
     //       <div>
     //         <p className="para">User Name: {form.fullName}</p>
     //         <p className="para">Phone Number: {form.pickUpPhoneNumber}</p>
+
+    //         <p> Phone-Number: {data.orderDetails.pickUpPhoneNumber}</p>
+    //         <p>Description: {data.orderDetails.description}</p>
+    //         <p>Monetary: {data.orderDetails.monetary}</p>
+    //         <a>Pay Here {data.checkoutLink}</a>
     //       </div>
     //     </>
     //   )
@@ -78,7 +79,7 @@ const WhichofThese = ({ nextStep, prevStep }) => {
   // if
 
   return (
-    <>{handleCustomer ?
+    <>
       <div>
       <p className="para"> Which of these are you?</p>
       <div style={{marginTop: "20px", marginBottom: "20px"}}>
@@ -87,41 +88,15 @@ const WhichofThese = ({ nextStep, prevStep }) => {
             <option value="dropoff">Drop off</option>
             <option value="none">None of the above</option>
         </select>
-        <div>
-          <label>Pick Up</label>
-          <input type="radio" checked={form.routeStatus === "pickup"} value="pickup" onChange={handleCustomer} />
-        </div>
-        <div>
-          <label>Drop Off</label>
-          <input type="radio" checked={form.routeStatus === "dropoff"} value="dropoff" onChange={handleCustomer} />
-        </div>
-        <div>
-          <label>None of the Above</label>
-          <input type="radio" checked={form.routeStatus === "none"} value="none" onChange={handleCustomer} />
-        </div>
-        <div>
-            <p>routeStatus {"From Content RouteStatus" +  form.routeStatus}</p>
+      </div>
+      <div>
 
-            {console.log("from content Help"  , form.routeStatus)}
+      </div>
+        <div style={{marginTop:'15px'}}>
+          <a onClick={Continue}>Next</a>
+          <a onClick={BackCon}>Back</a>
         </div>
-      </div>
-      <a onClick={Continue}>Next</a>
-      <a onClick={BackCon}>Back</a>
-      </div>
-      :
-      (
-        <>
-          {value === "pickup" || "dropoff" ?
-            <div>
-                <p className="para">User Name: {form.fullName}</p>
-                <p className="para">Phone Number: {form.pickUpPhoneNumber}</p>
-            </div>
-            :
-            (null)
-          }
-        </>
-      )
-      }
+      </div>      
     </>
   );
 };

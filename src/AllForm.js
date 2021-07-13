@@ -1,23 +1,39 @@
 import React, { useContext } from 'react'
-import { useFormik } from "formik";
-import * as Yup from "yup"
+// import { useFormik } from "formik";
+// import * as Yup from "yup"
 import { OrderContext } from './ContextPro';
 import axios from "axios"
 import "./styles.css"
 
-const AllForm = ({ nextStep, prevStep }) => {
+const marufUrl = `https://51fd448f5564.ngrok.io/api/save`
+const AllForm = ({ nextStep, prevStep, handleChange }) => {
     const { form, setForm } = useContext(OrderContext)
 
-    const loadData = async () => {
-        await axios.post(`${marufUrl}`, {
-            method: 'POST',
-            mode: "no-cors"
-        })
-          // .then((res) => res.json())
-          .then((data) => setForm(data))
-          .catch((err) => console.log(err));
-          console.log(setForm(data))
-      };
+    // const {} = form
+
+    const loadData =  () => {
+        axios.post(`${marufUrl}`, {
+         fullName: form.fullName,
+         pickUpPhoneNumber: form.pickUpPhoneNumber,
+         pickUpPhoneNumber: form.pickUpPhoneNumber,
+         description: form.description,
+         pickUpAddress: form.pickUpAddress,
+         monetary: form.monetary,
+         recipientName: form.recipientName,
+         dropOffPhoneNumber: form.dropOffPhoneNumber,
+         routeStatus: form.routeStatus,
+       })
+    
+         // .then((res) => res.json())
+         console.log(form)
+         .then((res) => {
+           setForm({form})
+           nextStep();
+         })
+         console.log(setForm({...form}))
+         .catch((err) => console.log(err));
+         console.log(setForm({...form}))
+     };
     
         const Continue = e => {
             e.preventDefault();
@@ -30,36 +46,40 @@ const AllForm = ({ nextStep, prevStep }) => {
             prevStep()
         }
 
+        const handleSubmit = e => {
+            e.preventDefault();
+          }
 
-    const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
-        initialValues: form 
-        // {
-        //   cvv: '',
-        //   number:'',
-        //   date: '',
-        // }
-        ,
-        onSubmit: ({cvv, number, date, setSubmitting  }) => {
-          console.log( `CVV: ${cvv}, Card Number: ${number}, Date: ${date}`)
-          setTimeout(function(){ 
-            <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
-            history.push('/payment/card')
-         }, 2000)
-        },
-        validationSchema: Yup.object().shape({
-          number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
-          date: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
-          cvv: Yup.string().min(2, 'Too Short').max(3, 'Too Long!').required(''),    
-        })
-      })
+
+    // const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
+    //     initialValues: form 
+    //     // {
+    //     //   cvv: '',
+    //     //   number:'',
+    //     //   date: '',
+    //     // }
+    //     ,
+    //     onSubmit: ({cvv, number, date, setSubmitting  }) => {
+    //       console.log( `CVV: ${cvv}, Card Number: ${number}, Date: ${date}`)
+    //       setTimeout(function(){ 
+    //         <div><span class="spinner-border spinner-border-sm mr-1"></span> Please wait</div>
+    //         history.push('/payment/card')
+    //      }, 2000)
+    //     },
+    //     validationSchema: Yup.object().shape({
+    //       number: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
+    //       date: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required(''),
+    //       cvv: Yup.string().min(2, 'Too Short').max(3, 'Too Long!').required(''),    
+    //     })
+    //   })
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <div onSubmit={handleSubmit}>
                 {/* FullName */}
                 <div className="input-container">
                     <label>Full Name</label>
-                    <input type="text" placeholder="full-name" autoComplete='off' name="fullName" required value={fullName} onChange={handleChange} />
+                    <input type="text" placeholder="full-name" autoComplete='off' name="fullName" required value={form.fullName} onChange={handleChange} />
                 </div>
                 {/* Pickup Phone Number */}
                 <div className="input-container">
@@ -89,7 +109,7 @@ const AllForm = ({ nextStep, prevStep }) => {
                 {/* Pick Up Address */}
                 <div className="input-container">
                     <label>Pick Address</label>
-                    <input type="text" placeholder="pick-up-address" autoComplete='off' name="pickUpAddress" required value={pickUpAddress} onChange={handleChange} />
+                    <input type="text" placeholder="pick-up-address" autoComplete='off' name="pickUpAddress" required value={form.pickUpAddress} onChange={handleChange} />
                 </div>
                 {/* DropoffphoneNumber */}
                 <div className="input-container">
@@ -98,8 +118,11 @@ const AllForm = ({ nextStep, prevStep }) => {
                 </div>
                 {/* WhichofThese */}
 
-
-            </form>
+                <div className="btn">
+                    <a onClick={Continue}>Next</a>
+                    <a onClick={BackCon}>Back</a> 
+                </div>
+            </div>
         </div>
     )
 }

@@ -7,7 +7,7 @@ import "./styles.css"
 import axios from "axios"
 import { OrderContext } from './ContextPro';
 
-const marufUrl = `https://b08d5ae3f280.ngrok.io/api/save`
+const marufUrl = `https://9a1418f0c4b3.ngrok.io/api/save`
 
 const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
   const { form, setForm } = useContext(OrderContext)
@@ -30,32 +30,30 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
      axios.post(`${marufUrl}`, {
       fullName: form.fullName,
       pickUpPhoneNumber: form.pickUpPhoneNumber,
-      pickUpPhoneNumber: form.pickUpPhoneNumber,
       description: form.description,
       pickUpAddress: form.pickUpAddress,
       monetary: form.monetary,
       recipientName: form.recipientName,
       dropOffPhoneNumber: form.dropOffPhoneNumber,
+      deliveryMethod:  form.deliveryMethod,
+      dropOffAddress: form.dropOffAddress,
       routeStatus: form.routeStatus,
     })
 
       // .then((res) => res.json())
-      console.log(form)
+      // console.log(form)
       .then((res) => {
         setForm({...form, checkoutLink: res.data.checkoutLink})
+        console.log({form: res.data})
         nextStep();
       })
-      console.log(setForm({...form}))
       .catch((err) => console.log(err));
-      console.log(setForm({...form}))
   };
 
     const Continue = e => {
         e.preventDefault();
-        console.log(loadData())
         loadData();
-        // nextStep();
-        console.log(form.routeStatus)
+        nextStep();
     }
 
     const BackCon = e => {
@@ -88,7 +86,7 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
                 <ListItemText primary="DropoffphoneNumber" secondary={form.dropOffPhoneNumber} />
               </ListItem>
               <ListItem>
-                {/* <ListItemText primary="SelectedOption" secondary={form.routeStatus} /> */}
+                <ListItemText primary="SelectedOption" secondary={form.routeStatus} />
               </ListItem>
             </List>
             <br />
@@ -96,7 +94,7 @@ const Confirm = ({ nextStep, prevStep, handleSubmit }) => {
             <a onClick={BackCon}>Back</a>
         </div>
     )
-} 
+}
 
 export default Confirm
 // ngrok http 3000
